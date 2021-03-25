@@ -1,25 +1,14 @@
 #include "inc.h"
-/**
-  *inc->stm8s_conf.h - раскоментировать строчки с нужными хедерами 
-  *периферии и необходимыми обработчиками прерываний. Все закоментированные
-  *обработчики ведут на бесконечные циклы.
-  * 
-  *Project->Options->General Options - выбрать мк
-  *
-  *Project->Options->Debugger - выбрать отладчик
-  *
-  *Project->Options->C/C++ Compiler->Preprocessor->Defined symbols  - задать
-  *семейство процессора(перечислены в lib->SPL->inc->stm8s.h), а также задать
-  *частоты внутренних и внешних генераторов(если не задать, то будут ипользованы
-  *значения по умолчанию из stm8s.h).
-  */
-
+inline void SysConfig(void){
+  CLK_Config();
+  UART_Config();
+}
 void main(void)
 {
-        GPIOD->DDR|=(1U<<5);
-        UART_Config();
+  SysConfig();
 	while (1){
-    UART1->DR = 0x56U;
-  };
+          for(int i = 0; i<100; ++i){
+                UART_Send(i, i+1);
+          }
+  }
 }
-

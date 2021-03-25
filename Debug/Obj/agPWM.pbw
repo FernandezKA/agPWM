@@ -45644,13 +45644,167 @@
     "scope": null
   },
   {
+    "ID": "c:@F@SysConfig",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void SysConfig(void)",
+    "location": {
+      "column": "6",
+      "line": "3",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "SysConfig",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysConfig",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void SysConfig(void)",
+    "location": {
+      "column": "6",
+      "line": "3",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "SysConfig",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Send",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Send(const uint8_t, const uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "5",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Send",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Send",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Send(const uint8_t, const uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "5",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Send",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "6",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "6",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@CLK_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void CLK_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "7",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "CLK_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@CLK_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void CLK_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "7",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "CLK_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@GPIO_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void GPIO_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "8",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "GPIO_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@GPIO_Config",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void GPIO_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "8",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "GPIO_Config",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysConfig",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void SysConfig(void)",
+    "location": {
+      "column": "13",
+      "line": "2",
+      "path": "C:\\dev\\MCU\\agPWM\\src\\main.c"
+    },
+    "name": "SysConfig",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@main",
     "What": "Function",
     "defdec": "Def",
     "display": "void main(void)",
     "location": {
       "column": "6",
-      "line": "17",
+      "line": "6",
       "path": "C:\\dev\\MCU\\agPWM\\src\\main.c"
     },
     "name": "main",
@@ -45658,59 +45812,17 @@
     "scope": null
   },
   {
-    "ID": "c:@F@UART_Config",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void UART_Config(void)",
+    "ID": "c:main.c@149@F@main@i",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "i",
     "location": {
-      "column": "6",
-      "line": "4",
-      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+      "column": "19",
+      "line": "10",
+      "path": "C:\\dev\\MCU\\agPWM\\src\\main.c"
     },
-    "name": "UART_Config",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UART_Config",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void UART_Config(void)",
-    "location": {
-      "column": "6",
-      "line": "4",
-      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
-    },
-    "name": "UART_Config",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:inc.h@F@UART_Send",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void UART_Send(const uint16_t)",
-    "location": {
-      "column": "13",
-      "line": "5",
-      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
-    },
-    "name": "UART_Send",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:inc.h@F@UART_Send",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void UART_Send(const uint16_t)",
-    "location": {
-      "column": "13",
-      "line": "5",
-      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
-    },
-    "name": "UART_Send",
-    "origin": "user_include",
+    "name": "i",
+    "origin": "project_file",
     "scope": null
   },
   {
@@ -45719,7 +45831,7 @@
     "defdec": "Def",
     "display": "void UART_Config(void)",
     "location": {
-      "column": "6",
+      "column": "13",
       "line": "8",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
@@ -45728,16 +45840,44 @@
     "scope": null
   },
   {
-    "ID": "c:inc.h@F@UART_Send",
+    "ID": "c:@F@UART_Send",
     "What": "Function",
     "defdec": "Def",
-    "display": "void UART_Send(const uint16_t)",
+    "display": "void UART_Send(const uint8_t, const uint8_t)",
     "location": {
       "column": "13",
-      "line": "15",
+      "line": "14",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
     "name": "UART_Send",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@CLK_Config",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void CLK_Config(void)",
+    "location": {
+      "column": "13",
+      "line": "22",
+      "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
+    },
+    "name": "CLK_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@GPIO_Config",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void GPIO_Config(void)",
+    "location": {
+      "column": "13",
+      "line": "27",
+      "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
+    },
+    "name": "GPIO_Config",
     "origin": "project_file",
     "scope": null
   }
