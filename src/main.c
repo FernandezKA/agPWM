@@ -10,6 +10,4 @@ void main(void)
 {
   SysConfig();
   asm("RIM");/*enable global interrupt*/
-	while (1){
-  }
 }
