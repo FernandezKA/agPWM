@@ -115,7 +115,9 @@ INTERRUPT_HANDLER(SPI_IRQHandler, 10)
 //Timer1 Update/Overflow/Trigger/Break Interrupt routine.
 INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
 {
-	while (1){};
+	TIM1->SR1&=~(1U<<TIM1_SR1_UIF);
+	GPIOD->ODR^=(1U<<2);
+	return;
 }
 #endif
 
@@ -292,7 +294,9 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
 //Timer4 Update/Overflow Interrupt routine.
 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 {
-	while (1){};
+  if(TIM4->SR1&TIM4_SR1_UIF==TIM4_SR1_UIF){
+	  	GPIOD->ODR^=(1U<<2);
+  }
 }
 #endif
 #endif /* (STM8S903) || (STM8AF622x)*/
