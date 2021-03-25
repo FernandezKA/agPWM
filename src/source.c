@@ -7,6 +7,7 @@
 #include"inc.h"
 inline void UART_Config(void){
     /*BAUDRATE 115.108 kbps, BRR = 0x8B, MASTER CLOCKING = 16 MHz*/
+  CLK->PCKENR1|=CLK_PCKENR1_UART1;/*ENABLE UART CLOCKING*/
     UART1->BRR1=0x08;
     UART1->BRR2=0x0B;
     UART1->CR2|=UART1_CR2_TEN;/*ENABLE TRANSMITTER*/
@@ -18,9 +19,7 @@ inline void UART_Send(const uint8_t data){
     UART1->DR = data;
 }
 inline void CLK_Config(void){
-    CLK->CKDIVR = 0x00U;/*WITHOUT PRESCALE*/
-    CLK->PCKENR1|=CLK_PCKENR1_TIM1;
-    CLK->PCKENR1|=CLK_PCKENR1_UART1;/*ENABLE TIM1&UART CLOCKING*/
+    CLK->CKDIVR=0x00U;/*WITHOUT PRESCALE*/ 
 }
 inline void GPIO_Config(void){
     GPIOD->DDR|=(1U<<2);/*SET GPIOD2 TO OUPUT AT LED*/
@@ -44,8 +43,8 @@ inline void TIM4_Config(void){
     CLK->PCKENR1|=CLK_PCKENR1_TIM4;
     TIM4->IER|=TIM4_IER_UIE;/*ENABLE INTERRUPT UPDATE*/
     TIM4->IER|=TIM4_IER_RESET_VALUE;
-    TIM4->PSCR = (0x06U);/*SET PRESCALER = 2^7 = 128*/
-    TIM4->ARR = 0xFFU;
+    TIM4->PSCR = (0x00U);/*SET PRESCALER = 2^0 = 1*/
+    TIM4->ARR = 0x9FU;
     TIM4->SR1 = (uint8_t)(~TIM4_SR1_UIF);
     TIM4->CR1|=TIM4_CR1_CEN;
 }
