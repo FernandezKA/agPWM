@@ -45686,27 +45686,13 @@
     "scope": null
   },
   {
-    "ID": "c:inc.h@state",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "state",
-    "location": {
-      "column": "22",
-      "line": "7",
-      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
-    },
-    "name": "state",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
     "ID": "c:inc.h@count_send",
     "What": "Variable",
     "defdec": "Def",
     "display": "count_send",
     "location": {
       "column": "25",
-      "line": "8",
+      "line": "7",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "count_send",
@@ -45720,7 +45706,7 @@
     "display": "void SysConfig(void)",
     "location": {
       "column": "6",
-      "line": "9",
+      "line": "8",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "SysConfig",
@@ -45734,7 +45720,7 @@
     "display": "void SysConfig(void)",
     "location": {
       "column": "6",
-      "line": "9",
+      "line": "8",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "SysConfig",
@@ -45748,7 +45734,7 @@
     "display": "void UART_Send(const uint32_t)",
     "location": {
       "column": "6",
-      "line": "10",
+      "line": "9",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "UART_Send",
@@ -45762,7 +45748,7 @@
     "display": "void UART_Send(const uint32_t)",
     "location": {
       "column": "6",
-      "line": "10",
+      "line": "9",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "UART_Send",
@@ -45776,7 +45762,7 @@
     "display": "void UART_Config(void)",
     "location": {
       "column": "6",
-      "line": "11",
+      "line": "10",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "UART_Config",
@@ -45790,7 +45776,7 @@
     "display": "void UART_Config(void)",
     "location": {
       "column": "6",
-      "line": "11",
+      "line": "10",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "UART_Config",
@@ -45804,7 +45790,7 @@
     "display": "void CLK_Config(void)",
     "location": {
       "column": "6",
-      "line": "12",
+      "line": "11",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "CLK_Config",
@@ -45818,7 +45804,7 @@
     "display": "void CLK_Config(void)",
     "location": {
       "column": "6",
-      "line": "12",
+      "line": "11",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "CLK_Config",
@@ -45832,7 +45818,7 @@
     "display": "void GPIO_Config(void)",
     "location": {
       "column": "6",
-      "line": "13",
+      "line": "12",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "GPIO_Config",
@@ -45846,7 +45832,7 @@
     "display": "void GPIO_Config(void)",
     "location": {
       "column": "6",
-      "line": "13",
+      "line": "12",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "GPIO_Config",
@@ -45860,7 +45846,7 @@
     "display": "void TIM2_Config(void)",
     "location": {
       "column": "6",
-      "line": "14",
+      "line": "13",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "TIM2_Config",
@@ -45874,7 +45860,7 @@
     "display": "void TIM2_Config(void)",
     "location": {
       "column": "6",
-      "line": "14",
+      "line": "13",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "TIM2_Config",
@@ -45888,7 +45874,7 @@
     "display": "void TIM4_Config(void)",
     "location": {
       "column": "6",
-      "line": "15",
+      "line": "14",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "TIM4_Config",
@@ -45902,7 +45888,7 @@
     "display": "void TIM4_Config(void)",
     "location": {
       "column": "6",
-      "line": "15",
+      "line": "14",
       "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
     },
     "name": "TIM4_Config",
@@ -46014,24 +46000,10 @@
     "display": "void TIM2_Config(void)",
     "location": {
       "column": "13",
-      "line": "33",
+      "line": "35",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
     "name": "TIM2_Config",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@ANS_GPIO",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "uint8_t ANS_GPIO(void)",
-    "location": {
-      "column": "16",
-      "line": "45",
-      "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
-    },
-    "name": "ANS_GPIO",
     "origin": "project_file",
     "scope": null
   },
@@ -46042,7 +46014,7 @@
     "display": "void TIM4_Config(void)",
     "location": {
       "column": "13",
-      "line": "49",
+      "line": "47",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
     "name": "TIM4_Config",
@@ -46056,7 +46028,7 @@
     "display": "void TIM4_UPD_OVF_IRQHandler(void)",
     "location": {
       "column": "1",
-      "line": "61",
+      "line": "59",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
     "name": "TIM4_UPD_OVF_IRQHandler",
@@ -46070,7 +46042,7 @@
     "display": "void UART1_TX_IRQHandler(void)",
     "location": {
       "column": "1",
-      "line": "85",
+      "line": "83",
       "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
     },
     "name": "UART1_TX_IRQHandler",

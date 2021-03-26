@@ -4,7 +4,6 @@ static volatile uint32_t index;
 static volatile uint32_t ones_temp;
 static volatile uint32_t ones;
 static volatile uint32_t size = 100000U;
-static volatile bool state = FALSE;
 static volatile uint8_t count_send = 0X00U;
 void SysConfig(void);
 void UART_Send(const uint32_t data);/*FUNCTION SEND 1 BYTE AT UART*/

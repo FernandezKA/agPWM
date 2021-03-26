@@ -11,7 +11,7 @@ inline void UART_Config(void)
   CLK->PCKENR1 |= CLK_PCKENR1_UART1; /*ENABLE UART CLOCKING*/
   UART1->BRR1 = 0x08;
   UART1->BRR2 = 0x0B;
-  UART1->CR2 |= UART1_CR2_TEN;   /*ENABLE TRANSMITTER*/
+  UART1->CR2 |= UART1_CR2_TEN; /*ENABLE TRANSMITTER*/
 }
 inline void UART_Send(const uint32_t data)
 {
@@ -29,7 +29,9 @@ inline void GPIO_Config(void)
 {
   GPIOD->DDR |= (1U << 2); /*SET GPIOD2 TO OUPUT AT LED*/
   GPIOD->CR1 |= (1U << 2);
-}
+  /*config pin for sampling*/
+  GPIOC->CR1|=(1U<<7);/*SET INPUT WITH PULL-UP*/
+  }
 inline void TIM2_Config(void)
 {
   CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1*/
@@ -41,10 +43,6 @@ inline void TIM2_Config(void)
   TIM1->EGR |= TIM1_EGR_UG; /*CALL UPDATE EVENT*/
   //TIM1->IER|=TIM1_IER_UIE;/*ALLOW INTERRUPT*/
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
-}
-inline uint8_t ANS_GPIO(void)
-{
-  return 0;
 }
 inline void TIM4_Config(void)
 {
@@ -64,7 +62,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
   {
     TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);
     GPIOD->ODR ^= (1U << 2);
-    if (index <= 100000U)
+    if (index < 100000U)
     {
       ++index;
       if (GPIOC->IDR & 0x80U == 0x80U)
@@ -72,12 +70,12 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
         ++ones_temp;
       }
     }
-    else
+    else if(index == 100000U)
     {
       index = 0x00U;
       ones = ones_temp;
       ++count_send;
-      UART1->DR = ones>>24;
+      UART1->DR = ones >> 24;
       UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
     }
   }
@@ -89,25 +87,25 @@ INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
   case 1:
     UART1->DR = (ones & 0xFFFFFF) >> 16;
     ++count_send;
-    UART1->SR&= ~UART1_SR_TXE;
+    UART1->SR &= ~UART1_SR_TXE;
     return;
     break;
   case 2:
     UART1->DR = (ones & 0xFFFF) >> 8;
     ++count_send;
-    UART1->SR&= ~UART1_SR_TXE;
+    UART1->SR &= ~UART1_SR_TXE;
     return;
     break;
   case 3:
     UART1->DR = (ones & 0xFF);
     ones = 0x00U;
     count_send = 0U;
-    UART1->SR&= ~UART1_SR_TXE;
+    UART1->SR &= ~UART1_SR_TXE;
     return;
     break;
   default:
-  UART1->SR&= ~UART1_SR_TXE;
-  UART1->CR2 &= ~UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
+    UART1->SR &= ~UART1_SR_TXE;
+    UART1->CR2 &= ~UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
     return;
     break;
   }
