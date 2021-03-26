@@ -65,7 +65,9 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     if (index < 100000U)
     {
       ++index;
-      if (GPIOC->IDR & 0x80U == 0x80U)
+      volatile unsigned char temp = GPIOC->IDR;
+      //temp = temp&0x80;
+      if ((temp & 0x80U) == 0x80U)
       {
         ++ones_temp;
       }
@@ -74,8 +76,9 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     {
       index = 0x00U;
       ones = ones_temp;
+      ones_temp = 0x00U;
       ++count_send;
-      UART1->DR = ones >> 24;
+      UART1->DR = (ones >> 24)&0xFFU;
       UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
     }
   }
@@ -85,13 +88,13 @@ INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
   switch (count_send)
   {
   case 1:
-    UART1->DR = (ones & 0xFFFFFF) >> 16;
+    UART1->DR = (ones >> 16) & 0xFFU;
     ++count_send;
     UART1->SR &= ~UART1_SR_TXE;
     return;
     break;
   case 2:
-    UART1->DR = (ones & 0xFFFF) >> 8;
+    UART1->DR = (ones >>8) & 0xFFU;
     ++count_send;
     UART1->SR &= ~UART1_SR_TXE;
     return;
