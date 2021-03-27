@@ -61,6 +61,12 @@ inline void TIM1_Config(void)
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
 
+inline void TIM2_Config(void){
+  CLK->PCKENR1|= CLK_PCKENR1_TIM2;
+  TIM2->IER|= TIM2_IER_UIE;/*ENABLE UPDATE INTERRUPT*/
+  
+}
+
 inline void TIM4_Config(void)
 {
   CLK->PCKENR1 |= CLK_PCKENR1_TIM4;
@@ -74,15 +80,9 @@ inline void TIM4_Config(void)
   TIM4->CR1 |= TIM4_CR1_CEN;
 }
 
-inline void PWM_1(const uint16_t value){
-  TIM1->CCR3H = value>>8;
-  TIM1->CCR3L = value&0xFFU;
-  return;
-}
-
-inline void PWM_2(const uint16_t value){
-  TIM1->CCR4H = value>>8;
-  TIM1->CCR4L = value&0xFFU;
+inline void PWM(const uint16_t value){
+  TIM1->CCR3H = TIM1->CCR4H = value>>8;
+  TIM1->CCR3L = TIM1->CCR4L = value&0xFFU;
   return;
 }
 
@@ -93,39 +93,29 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
     TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);
-    GPIOD->ODR ^= (1U << 2);
-    if (index < 100000U)
-    {
-      if(different){
-        if(index%100 == 0x00U ){
-          GPIOC->ODR^=(1U<<6);/*INVERT STATE OF LED1*/
+
+    GPIOD->ODR ^= (1U << 2);/*string for testing frequency sampling*/
+    //if (index < 100000U)/*very low speed (about 10 clocking*/
+    //{
+/*       if(different){
+        if(index%1000 == 0x00U ){
+          GPIOC->ODR^=(1U<<6);//LED_1 INDICATE NOT EQUALS VECTOR OF SAMPLES
         }
-      }
+      } *///This block of code using many times
       ++index;
-      volatile unsigned char temp = GPIOC->IDR;
-      //temp = temp&0x80;
-      if ((temp & 0x80U) == 0x80U)
+      //volatile unsigned char temp = GPIOC->IDR;
+      if ((GPIOC->IDR & 0x80U) == 0x80U)
       {
         ++ones_temp;
       }
-    }
-    else if(index == 100000U)
-    {
-      index = 0x00U;
-      if(ones_temp != last_ones){
-        different = TRUE;
-      }
-      else{
-        different = FALSE;
-      }
-      last_ones = ones_temp;
-      ones = ones_temp;
+  //}
+    //else 
+      if(index == 100000U)
+       last_ones = ones = ones_temp;
+      //ones = ones_temp;
       ones_temp = 0x00U;
-      ++count_send;
-      UART1->DR = (ones >> 24)&0xFFU;
-      UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
+      index = 0x00U;
     }
-  }
 }
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
