@@ -39,8 +39,8 @@ inline void TIM1_Config(void)
 {
   CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1 clocking*/
   TIM1->CR1|=TIM1_CR1_ARPE;
-  TIM1->PSCRH = 1599 >> 8;
-  TIM1->PSCRL = 1599 & 0xFF; /*PRESCALER 1600*/
+  TIM1->PSCRH = 159 >> 8;
+  TIM1->PSCRL = 159 & 0xFF; /*PRESCALER 1600*/
   TIM1->ARRH = 1000 >> 8;    /*16 MHz/1600/100 = 100 Hz*/
   TIM1->ARRL = 1000 & 0xFF;
 
@@ -51,8 +51,8 @@ inline void TIM1_Config(void)
   TIM1->CCER2|=TIM1_CCER2_CC4E;
   TIM1->CCR3H = 600U>>8;
   TIM1->CCR3L = 600&0xFFU;
-  TIM1->CCR3H = 500U>>8;
-  TIM1->CCR3L = 500U&0xFFU;
+  TIM1->CCR4H = 500U>>8;
+  TIM1->CCR4L = 500U&0xFFU;
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
 inline void TIM4_Config(void)
