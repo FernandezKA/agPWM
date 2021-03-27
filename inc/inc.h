@@ -14,3 +14,5 @@ void CLK_Config(void);/*AT THIS FUNCTION SETTONG CLOCKING FOR CPU, Fmaster, ENAB
 void GPIO_Config(void);/*SET GPIO PARAMETERS FOR ALL PIN*/
 void TIM1_Config(void);/*TIM2 USING FOR PWM GENERATION*/
 void TIM4_Config(void);/*TIM4 USING FOR GPIO STATE ASKING*/
+void PWM_1(const uint16_t value);/*positive*/
+void PWM_2(const uint16_t value);/*negative*/

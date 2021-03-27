@@ -13,6 +13,7 @@ inline void UART_Config(void)
   UART1->BRR2 = 0x0B;
   UART1->CR2 |= UART1_CR2_TEN; /*ENABLE TRANSMITTER*/
 }
+
 inline void UART_Send(const uint32_t data)
 {
   while (UART1->SR & UART1_SR_TXE == 0x00U)
@@ -21,10 +22,12 @@ inline void UART_Send(const uint32_t data)
   }; /*WAIT TRANSMIT DATA*/
   UART1->DR = data << 24;
 }
+
 inline void CLK_Config(void)
 {
   CLK->CKDIVR = 0x00U; /*WITHOUT PRESCALE*/
 }
+
 inline void GPIO_Config(void)
 {
   GPIOD->DDR |= (1U << 2); /*SET GPIOD2 TO OUPUT AT LED*/
@@ -35,6 +38,7 @@ inline void GPIO_Config(void)
   GPIOC->DDR|=(1U<<6);/*OUTPUT*/
   GPIOC->CR1|=(1U<<6);
   }
+
 inline void TIM1_Config(void)
 {
   CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1 clocking*/
@@ -49,12 +53,14 @@ inline void TIM1_Config(void)
   TIM1->CCMR4|=(1U<<6|1U<<5|1U<<3);
   TIM1->CCER2|=TIM1_CCER2_CC3E;/*Capture/compare 3 output enable*/
   TIM1->CCER2|=TIM1_CCER2_CC4E;
-  TIM1->CCR3H = 600U>>8;
-  TIM1->CCR3L = 600&0xFFU;
-  TIM1->CCR4H = 500U>>8;
+  TIM1->CCER2|=TIM1_CCER2_CC4P;/*INVERTING POLARITY FOR CH4*/
+  TIM1->CCR3H = 500U>>8;/*default value PWM with 50% duty*/
+  TIM1->CCR3L = 500&0xFFU;
+  TIM1->CCR4H = 500U>>8;/*default value PWM with 50% duty*/
   TIM1->CCR4L = 500U&0xFFU;
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
+
 inline void TIM4_Config(void)
 {
   CLK->PCKENR1 |= CLK_PCKENR1_TIM4;
@@ -66,6 +72,18 @@ inline void TIM4_Config(void)
   ITC->ISPR6 |= 0x03U;
   TIM4->SR1 = ~TIM4_SR1_UIF; /*clear uif bit at SREG for correct working*/
   TIM4->CR1 |= TIM4_CR1_CEN;
+}
+
+inline void PWM_1(const uint16_t value){
+  TIM1->CCR3H = value>>8;
+  TIM1->CCR3L = value&0xFFU;
+  return;
+}
+
+inline void PWM_2(const uint16_t value){
+  TIM1->CCR4H = value>>8;
+  TIM1->CCR4L = value&0xFFU;
+  return;
 }
 
 /*************************************Block of Interrupt***********************/
