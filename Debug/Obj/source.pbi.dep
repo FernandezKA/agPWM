@@ -1,5 +1,7 @@
-source.pbi: C:\dev\MCU\agPWM\lib\SPL\inc\stm8s_gpio.h \
-  C:\dev\MCU\agPWM\lib\SPL\inc\stm8s_clk.h \
+source.pbi: C:\dev\MCU\agPWM\src\source.c C:\dev\MCU\agPWM\inc\inc.h \
+  C:\dev\MCU\agPWM\inc/stm8s_conf.h C:\dev\MCU\agPWM\lib\SPL\inc\stm8s.h \
+  C:\dev\MCU\agPWM\inc\stm8s_conf.h \
   C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\intrinsics.h \
-  C:\dev\MCU\agPWM\inc\stm8s_conf.h C:\dev\MCU\agPWM\lib\SPL\inc\stm8s.h \
-  C:\dev\MCU\agPWM\inc\inc.h C:\dev\MCU\agPWM\src\source.c
+  C:\dev\MCU\agPWM\lib\SPL\inc\stm8s_clk.h \
+  C:\dev\MCU\agPWM\lib\SPL\inc/stm8s.h \
+  C:\dev\MCU\agPWM\lib\SPL\inc\stm8s_gpio.h

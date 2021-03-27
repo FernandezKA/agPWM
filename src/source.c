@@ -35,16 +35,24 @@ inline void GPIO_Config(void)
   GPIOC->DDR|=(1U<<6);/*OUTPUT*/
   GPIOC->CR1|=(1U<<6);
   }
-inline void TIM2_Config(void)
+inline void TIM1_Config(void)
 {
-  CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1*/
-  TIM1->PSCRH = 1600 >> 8;
-  TIM1->PSCRL = 1600 & 0xFF; /*PRESCALER 1600*/
-  TIM1->ARRH = 1000 >> 8;    /*16 MHz/160/10000 = 10 Hz*/
+  CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1 clocking*/
+  TIM1->CR1|=TIM1_CR1_ARPE;
+  TIM1->PSCRH = 1599 >> 8;
+  TIM1->PSCRL = 1599 & 0xFF; /*PRESCALER 1600*/
+  TIM1->ARRH = 1000 >> 8;    /*16 MHz/1600/100 = 100 Hz*/
   TIM1->ARRL = 1000 & 0xFF;
-  //TIM1->CR1|= TIM1_CR1_URS;/*ENABLE INTERRUPT FOR OVERFLOW*/
-  TIM1->EGR |= TIM1_EGR_UG; /*CALL UPDATE EVENT*/
-  //TIM1->IER|=TIM1_IER_UIE;/*ALLOW INTERRUPT*/
+
+  TIM1->BKR|=TIM1_BKR_MOE;
+  TIM1->CCMR3|=(1U<<6|1U<<5|1U<<3);/*MODE 1 AND ENABLE OUTPUT COMPARE PRELOAD ENABLE*/
+  TIM1->CCMR4|=(1U<<6|1U<<5|1U<<3);
+  TIM1->CCER2|=TIM1_CCER2_CC3E;/*Capture/compare 3 output enable*/
+  TIM1->CCER2|=TIM1_CCER2_CC4E;
+  TIM1->CCR3H = 600U>>8;
+  TIM1->CCR3L = 600&0xFFU;
+  TIM1->CCR3H = 500U>>8;
+  TIM1->CCR3L = 500U&0xFFU;
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
 inline void TIM4_Config(void)
@@ -59,6 +67,9 @@ inline void TIM4_Config(void)
   TIM4->SR1 = ~TIM4_SR1_UIF; /*clear uif bit at SREG for correct working*/
   TIM4->CR1 |= TIM4_CR1_CEN;
 }
+
+/*************************************Block of Interrupt***********************/
+
 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 {
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
