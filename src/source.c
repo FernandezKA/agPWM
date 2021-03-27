@@ -31,6 +31,9 @@ inline void GPIO_Config(void)
   GPIOD->CR1 |= (1U << 2);
   /*config pin for sampling*/
   GPIOC->CR1|=(1U<<7);/*SET INPUT WITH PULL-UP*/
+  /*CONFIGURE LED_1*/
+  GPIOC->DDR|=(1U<<6);/*OUTPUT*/
+  GPIOC->CR1|=(1U<<6);
   }
 inline void TIM2_Config(void)
 {
@@ -64,6 +67,11 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     GPIOD->ODR ^= (1U << 2);
     if (index < 100000U)
     {
+      if(different){
+        if(index%100 == 0x00U ){
+          GPIOC->ODR^=(1U<<6);/*INVERT STATE OF LED1*/
+        }
+      }
       ++index;
       volatile unsigned char temp = GPIOC->IDR;
       //temp = temp&0x80;
@@ -75,6 +83,13 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     else if(index == 100000U)
     {
       index = 0x00U;
+      if(ones_temp != last_ones){
+        different = TRUE;
+      }
+      else{
+        different = FALSE;
+      }
+      last_ones = ones_temp;
       ones = ones_temp;
       ones_temp = 0x00U;
       ++count_send;
