@@ -13,8 +13,9 @@ inline void SysConfig(void)
   UART_Config();
   GPIO_Config();
   TIM1_Config();
-  //TIM2_Config();
+  TIM2_Config();
   TIM4_Config();
+  TIM2->CCER1|=TIM2_CCER1_CC2E;/*INDICATED OPERABILITY FIRMWARE*/
 }
 void main(void)
 {
@@ -22,14 +23,7 @@ void main(void)
   asm("RIM"); /*enable global interrupt*/
   while (1)
   {
-    if (ones_temp != last_ones)
-    {
-      different = true;
-    }
-    else
-    {
-      different = false;
-    }
+
   }
   //asm("WFI");
 }

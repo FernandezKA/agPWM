@@ -59,7 +59,23 @@ void TIM1_Config(void)
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
 void TIM2_Config(void){
+  /*THIS TIMER WE USING FOR GENERATE BLINKING LED, LED1 - CH2, LED2 - CH3
+  *FOR GENERATE USING LOW FREQUENCY PWM WITH 50% DUTY*/
   CLK->PCKENR1|=CLK_PCKENR1_TIM2;/*ENABLE CLOCKING*/
+  TIM2->CR1|=TIM2_CR1_ARPE;
+  TIM2->PSCR|=(1U<<3|1U<<2|1U<<1|1U<<0);/*SET PRESCALER 2^15, Fps = 488 Hz*/
+  TIM2->ARRH = 488U>>8;
+  TIM2->ARRL = 488U&0xFFU;
+  TIM2->CCR2H = 244U>>8;
+  TIM2->CCR2L = 244U&0xFFU;
+  TIM2->CCR3H = 244U>>8;
+  TIM2->CCR3L = 244U&0xFFU;
+  //TIM2->CCER1|=TIM2_CCER1_CC2E;/*ENABLE CAPTURE/COMPARE FOR CHANNEL 2 AND 3*/
+  //TIM2->CCER2|=TIM2_CCER2_CC3E;
+  //TIM2->CCER2|=TIM2_CCER2_CC3P;/*UNPHASED BLINKING*/
+  TIM2->CCMR2|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
+  TIM2->CCMR3|= (1U<<6|1U<<5|1U<<3);
+  TIM2->CR1|=TIM2_CR1_CEN;/*RUN TIM2*/
 }
 void TIM4_Config(void)
 {
@@ -103,12 +119,14 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       if (ones_temp != last_ones)
       {
         different = true;
+        TIM2->CCER2|=TIM2_CCER2_CC3E;/*INDICATED DEFFERENSE BETWEN SAMPLES*/
         pwm_index = (uint16_t)(ones_temp / 10U);
         PWM(pwm_index);
       }
       else
       {
         different = false;
+        TIM2->CCER2&=~TIM2_CCER2_CC3E;/*NOT BLINKING BECAUSE SAMPLES IS EQUAL*/
       }
       last_ones = ones_temp;
       ones = ones_temp;
