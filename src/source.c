@@ -14,14 +14,14 @@ void UART_Config(void)
   UART1->CR2 |= UART1_CR2_TEN; /*ENABLE TRANSMITTER*/
 }
 
-/* inline void UART_Send(const uint32_t data)
+void UART_Send(const unsigned char data)
 {
   while (UART1->SR & UART1_SR_TXE == 0x00U)
   {
     asm("nop");
   }; //WAIT TRANSMIT DATA
-  UART1->DR = data << 24;
-}*/
+  UART1->DR = data;
+}
 void CLK_Config(void)
 {
   CLK->CKDIVR = 0x00U; /*WITHOUT PRESCALE*/
@@ -139,38 +139,39 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 }
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
-  asm("sim"); /*disable interrupt*/
+  //asm("sim"); /*disable interrupt*/
   switch (count_send)
   {
   case 0:
-    UART1->DR = (ones)&0xFFU; /*FIRST - LSB*/
+    UART_Send(last_ones&0xFFU);//(last_ones)&0xFFU; /*FIRST - LSB*/
     UART1->SR &= ~UART1_SR_TXE;
     ++count_send;
     asm("rim");
     return;
     break;
   case 1:
-    UART1->DR = (ones >> 8) & 0xFFU;
+    UART_Send((last_ones >> 8) & 0xFFU);
     UART1->SR &= ~UART1_SR_TXE;
     ++count_send;
     asm("rim");
     return;
     break;
   case 2:
-    UART1->DR = ((ones >> 16) & 0xFF);
+    UART_Send((last_ones >> 16) & 0xFF);
     ++count_send;
     UART1->SR &= ~UART1_SR_TXE;
     ones = 0x00U;
-    //count_send = 0x00U;
     UART1->SR &= ~UART1_SR_TXE;
     asm("rim");
     return;
     break;
   case 3:
     UART1->SR &= ~UART1_SR_TXE;
-    UART1->DR = 0x0A;               /*ENDLINE*/
+    UART_Send(0x0A);               /*ENDLINE*/
     UART1->CR2 &= ~UART1_CR2_TCIEN; /*DISABLE TRANSMIT COMPLETE INTERRUPT*/
     count_send = 0x00U;
+    asm("rim");
+    return;
     break;
   default:
     UART1->SR &= ~UART1_SR_TXE;

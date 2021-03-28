@@ -23464,6 +23464,34 @@
     "scope": null
   },
   {
+    "ID": "c:@F@UART_Send#1c#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Send(const unsigned char)",
+    "location": {
+      "column": "6",
+      "line": "13",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Send",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Send#1c#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void UART_Send(const unsigned char)",
+    "location": {
+      "column": "6",
+      "line": "13",
+      "path": "C:\\dev\\MCU\\agPWM\\inc\\inc.h"
+    },
+    "name": "UART_Send",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
     "ID": "c:@F@UART_Config#",
     "What": "Function",
     "defdec": "Dec",
@@ -23674,6 +23702,20 @@
     "scope": null
   },
   {
+    "ID": "c:@F@UART_Send#1c#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void UART_Send(const unsigned char)",
+    "location": {
+      "column": "6",
+      "line": "17",
+      "path": "C:\\dev\\MCU\\agPWM\\src\\source.c"
+    },
+    "name": "UART_Send",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:@F@CLK_Config#",
     "What": "Function",
     "defdec": "Def",
@@ -23772,7 +23814,7 @@
     "scope": null
   },
   {
-    "ID": "c:source.c@3581@F@TIM4_UPD_OVF_IRQHandler#@temp",
+    "ID": "c:source.c@3568@F@TIM4_UPD_OVF_IRQHandler#@temp",
     "What": "Variable",
     "defdec": "Def",
     "display": "temp",
