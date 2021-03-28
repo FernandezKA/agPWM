@@ -10,7 +10,7 @@ static  uint16_t pwm_index = 0x01U;
 static  bool different = false;
 static  bool completed = false;
 void SysConfig(void);
-void UART_Send(const uint32_t data);/*FUNCTION SEND 1 BYTE AT UART*/
+//inline void UART_Send(const uint32_t data);/*FUNCTION SEND 1 BYTE AT UART*/
 void UART_Config(void);/*AT THIS FUNCTION WE CONFIGURED UART PARAMETERS, BAUDRATE*/
 void CLK_Config(void);/*AT THIS FUNCTION SETTONG CLOCKING FOR CPU, Fmaster, ENABLE PERIPH CLOCKING*/
 void GPIO_Config(void);/*SET GPIO PARAMETERS FOR ALL PIN*/
