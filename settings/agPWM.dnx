@@ -63,8 +63,7 @@
         <ShowTimeLog>1</ShowTimeLog>
     </DataSample>
     <Breakpoints>
-        <Bp0>_ "STD_CODE" "{$PROJ_DIR$\src\source.c}.118.7" 1 0 0 0 "" 0 ""</Bp0>
-        <Count>1</Count>
+        <Count>0</Count>
     </Breakpoints>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>

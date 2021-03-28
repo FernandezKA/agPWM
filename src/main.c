@@ -2,8 +2,8 @@
 *UART_TX = PD5 
 *PWM_1 = TIM1_CH3 = PC3 - positive
 *PWM_2 = TIM1_CH4 = PC4 - negative
-*LED_1 = GPIOD_2
-*LED_2 = GPIOD_3
+*LED_1 = TIM2_CH2 = GPIOD_3
+*LED_2 = TIM2_CH3 = GPIOA_3
 *ANSW_PIN = GPIOC_7
 */
 #include "inc.h"
