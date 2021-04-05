@@ -83,13 +83,13 @@
         <GraphEnabled>0</GraphEnabled>
         <ShowTimeLog>1</ShowTimeLog>
     </DataSample>
-    <Breakpoints>
-        <Count>0</Count>
-    </Breakpoints>
     <TermIOLog>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>
     </TermIOLog>
+    <Breakpoints>
+        <Count>0</Count>
+    </Breakpoints>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>

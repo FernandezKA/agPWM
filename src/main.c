@@ -22,8 +22,6 @@ void main(void)
   SysConfig();
   asm("RIM"); /*enable global interrupt*/
   while(1){
-  //GPIOD->ODR^=0xFF;
-  //GPIOA->ODR^=0xFF;
   }
   //asm("WFI");
 }

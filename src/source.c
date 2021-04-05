@@ -29,14 +29,14 @@ void CLK_Config(void)
 
 void GPIO_Config(void)
 {
-  GPIOD->DDR |= (1U << 2); /*SET GPIOD2 TO OUPUT AT TESTING LED*/
-  GPIOD->CR1 |= (1U << 2);
+  //GPIOD->DDR |= (1U << 2); /*SET GPIOD2 TO OUPUT AT TESTING LED*/
+  //GPIOD->CR1 |= (1U << 2);
   /*config pin for sampling*/
   GPIOC->CR1 |= (1U << 7); /*SET INPUT WITH PULL-UP*/
   /*CONFIGURE LED_1*/
   //GPIOC->DDR |= (1U << 6); /*OUTPUT*/
   //GPIOC->CR1 |= (1U << 6);
-  
+  /*Configure LED*/
   GPIOA->DDR|=(1U<<3);
   GPIOA->CR1|=(1U<<3);
   
@@ -107,7 +107,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
     TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);
-    GPIOD->ODR ^= (1U << 2); /*string for testing frequency sampling*/
+    //GPIOD->ODR ^= (1U << 2); /*string for testing frequency sampling*/
     if (index < 100000U)
     {
       ++index;
