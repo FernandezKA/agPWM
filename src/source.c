@@ -34,8 +34,14 @@ void GPIO_Config(void)
   /*config pin for sampling*/
   GPIOC->CR1 |= (1U << 7); /*SET INPUT WITH PULL-UP*/
   /*CONFIGURE LED_1*/
-  GPIOC->DDR |= (1U << 6); /*OUTPUT*/
-  GPIOC->CR1 |= (1U << 6);
+  //GPIOC->DDR |= (1U << 6); /*OUTPUT*/
+  //GPIOC->CR1 |= (1U << 6);
+  
+  GPIOA->DDR|=(1U<<3);
+  GPIOA->CR1|=(1U<<3);
+  
+  GPIOD->DDR|=(1U<<3);
+  GPIOD->CR1|=(1U<<3);
 }
 
 void TIM1_Config(void)
@@ -89,7 +95,6 @@ void TIM4_Config(void)
   TIM4->SR1 = ~TIM4_SR1_UIF; /*clear uif bit at SREG for correct working*/
   TIM4->CR1 |= TIM4_CR1_CEN;
 }
-
 void PWM(const uint16_t value)
 {
   TIM1->CCR3H = TIM1->CCR4H = (uint16_t)value >> 8;
