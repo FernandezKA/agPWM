@@ -6,6 +6,10 @@
 
 "STM8S103F3P" 
 
+"--suppress_download" 
+
+"--erase_memory" 
+
 
 
 

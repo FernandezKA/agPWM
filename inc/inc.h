@@ -18,3 +18,5 @@ void TIM1_Config(void);/*TIM1 USING FOR PWM GENERATION*/
 void TIM2_Config(void);/*TIM2 USING FOR LED INDICATING*/
 void TIM4_Config(void);/*TIM4 USING FOR GPIO STATE ASKING*/
 void PWM(const uint16_t value);/*positive*/
+/*uart -> send 1 byte*/
+/*max value 0xFF*/

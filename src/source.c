@@ -7,10 +7,11 @@
 #include "inc.h"
 void UART_Config(void)
 {
-  /*BAUDRATE 9600 kbps, MASTER CLOCKING = 16 MHz*/
+  /*BAUDRATE 115200 kbps, MASTER CLOCKING = 16 MHz*/
   CLK->PCKENR1 |= CLK_PCKENR1_UART1; /*ENABLE UART CLOCKING*/
-  UART1->BRR1 = 0x68;
-  UART1->BRR2 = 0x03;
+  /*old value is 0X68, 0X03(1, 2)*/
+  UART1->BRR2 = 0x0B;
+  UART1->BRR1 = 0x08;
   UART1->CR2 |= UART1_CR2_TEN; /*ENABLE TRANSMITTER*/
 }
 
@@ -29,13 +30,8 @@ void CLK_Config(void)
 
 void GPIO_Config(void)
 {
-  //GPIOD->DDR |= (1U << 2); /*SET GPIOD2 TO OUPUT AT TESTING LED*/
-  //GPIOD->CR1 |= (1U << 2);
   /*config pin for sampling*/
   GPIOC->CR1 |= (1U << 7); /*SET INPUT WITH PULL-UP*/
-  /*CONFIGURE LED_1*/
-  //GPIOC->DDR |= (1U << 6); /*OUTPUT*/
-  //GPIOC->CR1 |= (1U << 6);
   /*Configure LED*/
   GPIOA->DDR|=(1U<<3);
   GPIOA->CR1|=(1U<<3);
@@ -49,19 +45,19 @@ void TIM1_Config(void)
   CLK->PCKENR2 |= CLK_PCKENR1_TIM1; /*ENABLE TIM1 clocking*/
   TIM1->CR1 |= TIM1_CR1_ARPE;
   TIM1->PSCRH = 15 >> 8;
-  TIM1->PSCRL = 15 & 0xFF;  /*PRESCALER 1600*/
-  TIM1->ARRH = 10000U >> 8; /*16 MHz/1600/100 = 100 Hz*/
-  TIM1->ARRL = 10000U & 0xFF;
+  TIM1->PSCRL = 15 & 0xFF;  /*PRESCALER 16*/
+  TIM1->ARRH = 9999U >> 8; /*16 MHz/16/10000 = 100 Hz*/
+  TIM1->ARRL = 9999U & 0xFF;
   TIM1->BKR |= TIM1_BKR_MOE;
   TIM1->CCMR3 |= (1U << 6 | 1U << 5 | 1U << 3); /*MODE 1 AND ENABLE OUTPUT COMPARE PRELOAD ENABLE*/
   TIM1->CCMR4 |= (1U << 6 | 1U << 5 | 1U << 3);
   TIM1->CCER2 |= TIM1_CCER2_CC3E; /*Capture/compare 3 output enable*/
   TIM1->CCER2 |= TIM1_CCER2_CC4E;
   TIM1->CCER2 |= TIM1_CCER2_CC4P; /*INVERTING POLARITY FOR CH4*/
-  TIM1->CCR3H = 500U >> 8;        /*default value PWM with 50% duty*/
-  TIM1->CCR3L = 500 & 0xFFU;
-  TIM1->CCR4H = 500U >> 8; /*default value PWM with 50% duty*/
-  TIM1->CCR4L = 500U & 0xFFU;
+  TIM1->CCR3H = 5000U >> 8;        /*default value PWM with 50% duty*/
+  TIM1->CCR3L = 5000U & 0xFFU;
+  TIM1->CCR4H = 5000U >> 8; /*default value PWM with 50% duty*/
+  TIM1->CCR4L = 5000U & 0xFFU;
   TIM1->CR1 |= TIM1_CR1_CEN; /*RUN TIMER*/
 }
 void TIM2_Config(void){
@@ -137,11 +133,14 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       ones = ones_temp;
       ones_temp = 0x00U;
       count_send = 0x00U;
-      UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
+      //UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
+      /*DISABLE INTERRUPT BECAUSE WE SENT 1 BYTE*/
+      uint8_t norming_value = (uint8_t) (last_ones/0x188U);/*norming value is 100000/255 = 392*/
+      UART_Send(norming_value);
       return;
     }
   }
-}
+} 
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
   //asm("sim"); /*disable interrupt*/

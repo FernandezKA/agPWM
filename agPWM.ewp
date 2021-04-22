@@ -151,7 +151,7 @@
                 <option>
                     <name>IccOptStrategy</name>
                     <version>0</version>
-                    <state>2</state>
+                    <state>0</state>
                 </option>
                 <option>
                     <name>IccOptLevelSlave</name>
@@ -188,7 +188,7 @@
                 </option>
                 <option>
                     <name>CCDefines</name>
-                    <state>STM8S003</state>
+                    <state>STM8S103</state>
                     <state>HSE_VALUE=((uint32_t)16000000)</state>
                     <state>HSI_VALUE=((uint32_t)16000000)</state>
                     <state>LSI_VALUE=((uint32_t)128000)</state>
@@ -302,7 +302,7 @@
                 </option>
                 <option>
                     <name>IccCppDialect</name>
-                    <state>0</state>
+                    <state>1</state>
                 </option>
                 <option>
                     <name>IccNoVregs</name>

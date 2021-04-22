@@ -1,4 +1,4 @@
-/***************************
+/*
 *UART_TX = PD5 
 *PWM_1 = TIM1_CH3 = PC3 - positive
 *PWM_2 = TIM1_CH4 = PC4 - negative
@@ -7,6 +7,7 @@
 *ANSW_PIN = GPIOC_7
 */
 #include "inc.h"
+//#include "stm8s_conf.h"
 inline void SysConfig(void)
 {
   CLK_Config();
@@ -20,8 +21,9 @@ inline void SysConfig(void)
 void main(void)
 {
   SysConfig();
-  asm("RIM"); /*enable global interrupt*/
+  //asm("RIM"); /*enable global interrupt*/
   while(1){
+    GPIOD->ODR^=(1<<3);
   }
   //asm("WFI");
 }
