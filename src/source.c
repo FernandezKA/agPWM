@@ -7,11 +7,11 @@
 #include "inc.h"
 void UART_Config(void)
 {
-  /*BAUDRATE 115200 kbps, MASTER CLOCKING = 16 MHz*/
+  /*BAUDRATE 9600 kbps, MASTER CLOCKING = 16 MHz*/
   CLK->PCKENR1 |= CLK_PCKENR1_UART1; /*ENABLE UART CLOCKING*/
   /*old value is 0X68, 0X03(1, 2)*/
-  UART1->BRR2 = 0x0B;
-  UART1->BRR1 = 0x08;
+  UART1->BRR1 = 0x68;
+  UART1->BRR2 = 0x02;
   UART1->CR2 |= UART1_CR2_TEN; /*ENABLE TRANSMITTER*/
 }
 
@@ -91,12 +91,6 @@ void TIM4_Config(void)
   TIM4->SR1 = ~TIM4_SR1_UIF; /*clear uif bit at SREG for correct working*/
   TIM4->CR1 |= TIM4_CR1_CEN;
 }
-void PWM(const uint16_t value)
-{
-  TIM1->CCR3H = TIM1->CCR4H = (uint16_t)value >> 8;
-  TIM1->CCR3L = TIM1->CCR4L = (uint16_t)value & 0xFFU;
-  return;
-}
 /*************************************Block of Interrupt***********************/
 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 {
@@ -121,8 +115,6 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       {
         different = true;
         TIM2->CCER2|=TIM2_CCER2_CC3E;/*INDICATED DEFFERENSE BETWEN SAMPLES*/
-        pwm_index = (uint16_t)(ones_temp / 10U);
-        PWM(pwm_index);
       }
       else
       {
@@ -133,55 +125,32 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       ones = ones_temp;
       ones_temp = 0x00U;
       count_send = 0x00U;
-      //UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
       /*DISABLE INTERRUPT BECAUSE WE SENT 1 BYTE*/
-      uint8_t norming_value = (uint8_t) (last_ones/0x188U);/*norming value is 100000/255 = 392*/
+      volatile uint8_t norming_value = (uint8_t) (last_ones/0x188U);/*norming value is 100000/255 = 392*/
       UART_Send(norming_value);
+      ++count_send;
+      UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
       return;
     }
   }
 } 
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
-  //asm("sim"); /*disable interrupt*/
   switch (count_send)
   {
-  case 0:
-    UART_Send(last_ones&0xFFU);//(last_ones)&0xFFU; /*FIRST - LSB*/
-    UART1->SR &= ~UART1_SR_TXE;
-    ++count_send;
-    asm("rim");
-    return;
-    break;
   case 1:
-    UART_Send((last_ones >> 8) & 0xFFU);
     UART1->SR &= ~UART1_SR_TXE;
+    UART_Send(0x0D);
     ++count_send;
-    asm("rim");
-    return;
     break;
   case 2:
-    UART_Send((last_ones >> 16) & 0xFF);
-    ++count_send;
     UART1->SR &= ~UART1_SR_TXE;
-    ones = 0x00U;
-    UART1->SR &= ~UART1_SR_TXE;
-    asm("rim");
-    return;
-    break;
-  case 3:
-    UART1->SR &= ~UART1_SR_TXE;
-    UART_Send(0x0A);               /*ENDLINE*/
+    UART_Send(0x0A);
     UART1->CR2 &= ~UART1_CR2_TCIEN; /*DISABLE TRANSMIT COMPLETE INTERRUPT*/
-    count_send = 0x00U;
-    asm("rim");
-    return;
+    ++count_send;
     break;
   default:
     UART1->SR &= ~UART1_SR_TXE;
-    UART1->CR2 &= ~UART1_CR2_TCIEN; /*DISABLE TRANSMIT COMPLETE INTERRUPT*/
-    asm("rim");
-    return;
     break;
   }
 }

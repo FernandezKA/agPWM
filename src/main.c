@@ -21,9 +21,10 @@ inline void SysConfig(void)
 void main(void)
 {
   SysConfig();
-  //asm("RIM"); /*enable global interrupt*/
+  asm("RIM"); /*enable global interrupt*/
   while(1){
-    GPIOD->ODR^=(1<<3);
+    //GPIOD->ODR^=(1<<3);
+    //UART1->DR = 0x0A;
   }
   //asm("WFI");
 }

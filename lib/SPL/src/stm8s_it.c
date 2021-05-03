@@ -1,5 +1,6 @@
 #include "stm8s_conf.h"
 #include "stm8s_it.h"
+
 #ifndef TRAP_IRQ
 //TRAP Interrupt routine
 INTERRUPT_HANDLER_TRAP(TRAP_IRQHandler)
@@ -114,9 +115,7 @@ INTERRUPT_HANDLER(SPI_IRQHandler, 10)
 //Timer1 Update/Overflow/Trigger/Break Interrupt routine.
 INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
 {
-	TIM1->SR1&=~(1U<<TIM1_SR1_UIF);
-	GPIOD->ODR^=(1U<<2);
-	return;
+	while (1){};
 }
 #endif
 
@@ -183,10 +182,13 @@ INTERRUPT_HANDLER(TIM3_CAP_COM_IRQHandler, 16)
 
 #if defined (STM8S208) || defined(STM8S207) || defined(STM8S007) || defined(STM8S103) || \
     defined(STM8S003) ||  defined (STM8AF62Ax) || defined (STM8AF52Ax) || defined (STM8S903)
-//#ifndef UART1_TX_IRQ 
+#ifndef UART1_TX_IRQ 
 //UART1 TX Interrupt routine.
-
-//#endif
+/*INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
+{
+	while (1){};
+}*/
+#endif
 
 #ifndef UART1_RX_IRQ 
 //UART1 RX Interrupt routine.
@@ -285,8 +287,14 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
 	while (1){};
 }
 #endif
-//#else /* STM8S208 or STM8S207 or STM8S105 or STM8S103 or STM8AF52Ax or STM8AF62Ax or STM8AF626x */
-
+#else /* STM8S208 or STM8S207 or STM8S105 or STM8S103 or STM8AF52Ax or STM8AF62Ax or STM8AF626x */
+#ifndef TIM4_UPD_OVF_IRQ
+//Timer4 Update/Overflow Interrupt routine.
+/*INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
+{
+	while (1){};
+}*/
+#endif
 #endif /* (STM8S903) || (STM8AF622x)*/
 
 #ifndef EEPROM_EEC_IRQ 
