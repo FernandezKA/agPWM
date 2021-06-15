@@ -1,30 +1,24 @@
 /*
 *UART_TX = PD5 
-*PWM_1 = TIM1_CH3 = PC3 - positive
-*PWM_2 = TIM1_CH4 = PC4 - negative
 *LED_1 = TIM2_CH2 = GPIOD_3
-*LED_2 = TIM2_CH3 = GPIOA_3
 *ANSW_PIN = GPIOC_7
+*PA1 - clocking(only for HSE, 8 MHz
 */
 #include "inc.h"
-//#include "stm8s_conf.h"
 inline void SysConfig(void)
 {
-  CLK_Config();
+  //CLK_HSI_Config();
+  CLK_HSE_Config();
   UART_Config();
   GPIO_Config();
-  TIM1_Config();
-  TIM2_Config();
-  TIM4_Config();
-  TIM2->CCER1|=TIM2_CCER1_CC2E;/*INDICATED OPERABILITY FIRMWARE*/
+  TIM1_Config();/*using for edit freq of pwm tim_2*/
+  TIM2_Config();/*using for indicate activity*/
+  TIM4_Config();/*using for definition frequency of sampling*/
+  TIM2->CCER1|=TIM2_CCER1_CC2E;
 }
 void main(void)
 {
   SysConfig();
   asm("RIM"); /*enable global interrupt*/
-  while(1){
-    //GPIOD->ODR^=(1<<3);
-    //UART1->DR = 0x0A;
-  }
-  //asm("WFI");
+  asm("WFI");
 }

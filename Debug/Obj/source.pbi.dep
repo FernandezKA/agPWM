@@ -1,0 +1,10 @@
+source.pbi: \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\src\source.c \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\inc\inc.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\inc/stm8s_conf.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\lib\SPL\inc\stm8s.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\inc\stm8s_conf.h \
+  C:\Program\ Files\ (x86)\IAR\ Systems\Embedded\ Workbench\ 8.3\stm8\inc\c\intrinsics.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\lib\SPL\inc\stm8s_clk.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\lib\SPL\inc/stm8s.h \
+  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\lib\SPL\inc\stm8s_gpio.h

@@ -3,7 +3,8 @@
 void SysConfig(void);
 void UART_Send(const unsigned char data);/*FUNCTION SEND 1 BYTE AT UART*/
 void UART_Config(void);/*AT THIS FUNCTION WE CONFIGURED UART PARAMETERS, BAUDRATE*/
-void CLK_Config(void);/*AT THIS FUNCTION SETTONG CLOCKING FOR CPU, Fmaster, ENABLE PERIPH CLOCKING*/
+void CLK_HSE_Config(void);/*Define clocking at external generator*/
+void CLK_HSI_Config(void);/*Define clocking at internal RC - circuilt*/
 void GPIO_Config(void);/*SET GPIO PARAMETERS FOR ALL PIN*/
 void TIM1_Config(void);/*TIM1 USING FOR PWM GENERATION*/
 void TIM2_Config(void);/*TIM2 USING FOR LED INDICATING*/

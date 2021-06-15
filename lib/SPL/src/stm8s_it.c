@@ -113,10 +113,7 @@ INTERRUPT_HANDLER(SPI_IRQHandler, 10)
 
 #ifndef TIM1_UPD_OVF_TRG_BRK_IRQ 
 //Timer1 Update/Overflow/Trigger/Break Interrupt routine.
-INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
-{
-	while (1){};
-}
+
 #endif
 
 #ifndef TIM1_CAP_COM_IRQ 
@@ -146,10 +143,7 @@ INTERRUPT_HANDLER(TIM5_CAP_COM_IRQHandler, 14)
 #else /* (STM8S208) || (STM8S207) || (STM8S105) || (STM8S103) || (STM8AF62Ax) || (STM8AF52Ax) || (STM8AF626x) */
 #ifndef TIM2_UPD_OVF_BRK_IRQ
 //Timer2 Update/Overflow/Break Interrupt routine.
-INTERRUPT_HANDLER(TIM2_UPD_OVF_BRK_IRQHandler, 13)
-{
-	while (1){};
-}
+
 #endif
 
 #ifndef TIM2_CAP_COM_IRQ 
