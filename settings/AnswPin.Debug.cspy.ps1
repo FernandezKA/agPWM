@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\ferna\OneDrive\Рабочий стол\pinAnsw\settings\AnswPin.Debug.general.xcl" --backend -f "C:\Users\ferna\OneDrive\Рабочий стол\pinAnsw\settings\AnswPin.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\dev\MCU\agPWM\settings\AnswPin.Debug.general.xcl" --backend -f "C:\dev\MCU\agPWM\settings\AnswPin.Debug.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\Users\ferna\OneDrive\Рабочий стол\pinAnsw\settings\AnswPin.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\Users\ferna\OneDrive\Рабочий стол\pinAnsw\settings\AnswPin.Debug.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.3\common\bin\cspybat" -f "C:\dev\MCU\agPWM\settings\AnswPin.Debug.general.xcl" --debug_file=$debugfile --backend -f "C:\dev\MCU\agPWM\settings\AnswPin.Debug.driver.xcl" 
 }

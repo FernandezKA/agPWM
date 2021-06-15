@@ -1,2 +1,1 @@
-stm8s_tim3.pbi: \
-  C:\Users\ferna\OneDrive\Рабочий\ стол\pinAnsw\lib\SPL\src\stm8s_tim3.c
+stm8s_tim3.pbi: C:\dev\MCU\agPWM\lib\SPL\src\stm8s_tim3.c

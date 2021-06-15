@@ -94,7 +94,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
     TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);
-    if (index < 60000U)
+    if (index < size)
     {
       ++index;
       volatile unsigned char temp = GPIOC->IDR;/*read value at input port*/
@@ -106,7 +106,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       }
       return;
     }
-    else if (index == 60000U)
+    else if (index == size)
     {
       index = 0x00U;
       if (ones_temp != last_ones)
