@@ -7,8 +7,8 @@
 #include "inc.h"
 inline void SysConfig(void)
 {
-  CLK_HSI_Config();
-  //CLK_HSE_Config();
+  //CLK_HSI_Config();
+  CLK_HSE_Config();
   UART_Config();
   GPIO_Config();
   TIM1_Config();/*using for edit freq of pwm tim_2*/
