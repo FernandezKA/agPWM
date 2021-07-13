@@ -20,5 +20,5 @@ void main(void)
 {
   SysConfig();
   asm("RIM"); /*enable global interrupt*/
-  asm("WFI");
+  asm("WFI"); 
 }

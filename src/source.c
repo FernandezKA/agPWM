@@ -50,7 +50,7 @@ void TIM1_Config(void)
   TIM1->ARRH = 1000U >> 8; /*16 MHz/32000/1000 = 0,5 Hz*/
   TIM1->ARRL = 1000U & 0xFF;
   TIM1->IER|=TIM1_IER_UIE;
-  TIM1->BKR |= TIM1_BKR_MOE;
+  //TIM1->BKR |= TIM1_BKR_MOE;
 }
 void TIM2_Config(void){
   /*THIS TIMER WE USING FOR GENERATE BLINKING LED
@@ -90,52 +90,88 @@ void TIM4_Config(void)
 /*************************************Block of Interrupt***********************/
 INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 {
-  /*At this IRQ we answering state of pin, and write into variable*/
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
-    TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);
-    if (index < size)
+    TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);//Clear status register for out from IRQ
+    
+    if(index < size)
     {
       ++index;
       volatile unsigned char temp = GPIOC->IDR;/*read value at input port*/
+      ((temp&0x80U) == 0x80U)? (++ones_temp) : (ones_temp = ones_temp);
+    }
+    ///////////////////////////////////////////////////////////////////////////
+    if(index == size)
+    {
+      //This block for indicate of difference
+      if(ones_temp != last_ones)
+      {
+        different = true;
+        TIM2->PSCR=(1U<<3|1U<<2);//EDIT FREQ BLINKING AT 2
+        TIM1->CR1|=TIM1_CR1_CEN; //Begin count at stop
+      }else
+      {
+        different = false;
+      }
+      
+      last_ones = ones_temp;//Write new value of fill from old value
+      volatile uint8_t norming_value = (uint8_t) (last_ones/0xEBU);//norming value is 60000/255 = 235
+      UART_Send(norming_value);
+      ones_temp = 0x00U;
+      count_send = 1U;
+      UART1->CR2 |= UART1_CR2_TCIEN; //ENABLE TRANSMIT COMPLETE INTERRUPT
+    }
+  }
+  
+}
+  /*At this IRQ we answering state of pin, and write into variable*/
+ /* if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
+  {
+    
+    TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);//Clear status register for out from IRQ
+    if (index < size)
+    {
+      ++index;
+      volatile unsigned char temp = GPIOC->IDR;//read value at input port
       if ((temp & 0x80U) == 0x80U)
       {
         ++ones_temp;
-        //GPIOD->ODR ^= (1U << 2); /*string for testing frequency sampling*/
+        //GPIOD->ODR ^= (1U << 2); //string for testing frequency sampling
 
       }
       return;
-    }
-    else if (index == size)
+    }  
+    if (index == size)
     {
       index = 0x00U;
       if (ones_temp != last_ones)
       {
         different = true;
-        //TIM2->CCER2|=TIM2_CCER2_CC3E;/*INDICATED DEFFERENSE BETWEN SAMPLES*/
-        /*We using TIM1 for definition time of fast - blinking*/
-        TIM2->PSCR=(1U<<3|1U<<2);/*EDIT FREQ BLINKING AT 2*/
+        //TIM2->CCER2|=TIM2_CCER2_CC3E;//INDICATED DEFFERENSE BETWEN SAMPLES
+        //We using TIM1 for definition time of fast - blinking
+        TIM2->PSCR=(1U<<3|1U<<2);//EDIT FREQ BLINKING AT 2
         TIM1->CR1|=TIM1_CR1_CEN;
       }
       else
       {
         different = false;
-        //TIM2->CCER2&=~TIM2_CCER2_CC3E;/*NOT BLINKING BECAUSE SAMPLES IS EQUAL*/
+        //TIM2->CCER2&=~TIM2_CCER2_CC3E;//NOT BLINKING BECAUSE SAMPLES IS EQUAL//
       }
       last_ones = ones_temp;
       ones = ones_temp;
       ones_temp = 0x00U;
       count_send = 0x00U;
-      /*DISABLE INTERRUPT BECAUSE WE SENT 1 BYTE*/
-      volatile uint8_t norming_value = (uint8_t) (last_ones/0xEBU);/*norming value is 60000/255 = 235*/
+      //DISABLE INTERRUPT BECAUSE WE SENT 1 BYTE
+      volatile uint8_t norming_value = (uint8_t) (last_ones/0xEBU);//norming value is 60000/255 = 235
       UART_Send(norming_value);
       ++count_send;
-      /*For next sending bytes we using IRQ at TXE*/
-      UART1->CR2 |= UART1_CR2_TCIEN; /*ENABLE TRANSMIT COMPLETE INTERRUPT*/
+      //For next sending bytes we using IRQ at TXE
+      UART1->CR2 |= UART1_CR2_TCIEN; //ENABLE TRANSMIT COMPLETE INTERRUPT
       return;
     }
   }
-} 
+} */
+/*******************************************************************************/
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
   switch (count_send)

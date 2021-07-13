@@ -765,7 +765,7 @@
                 <expressions>
                     <item>last_ones</item>
                     <item>norming_value</item>
-                    <item></item>
+                    <item />
                 </expressions>
                 <col-names>
                     <item>Expression</item>
