@@ -45334,6 +45334,188 @@
     "scope": null
   },
   {
+    "ID": "c:@F@UART_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void UART_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "6",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "UART_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART_Send#1c#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void UART_Send(const unsigned char)",
+    "location": {
+      "column": "6",
+      "line": "15",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "UART_Send",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@CLK_HSE_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void CLK_HSE_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "23",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "CLK_HSE_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@CLK_HSI_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void CLK_HSI_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "32",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "CLK_HSI_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@GPIO_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void GPIO_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "35",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "GPIO_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TIM1_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TIM1_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "44",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "TIM1_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TIM2_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TIM2_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "55",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "TIM2_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TIM4_Config#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TIM4_Config(void)",
+    "location": {
+      "column": "6",
+      "line": "77",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "TIM4_Config",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TIM4_UPD_OVF_IRQHandler#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TIM4_UPD_OVF_IRQHandler(void)",
+    "location": {
+      "column": "1",
+      "line": "128",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "TIM4_UPD_OVF_IRQHandler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:source.c@4679@F@TIM4_UPD_OVF_IRQHandler#@temp",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "temp",
+    "location": {
+      "column": "30",
+      "line": "137",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "temp",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:source.c@5600@F@TIM4_UPD_OVF_IRQHandler#@norming_value",
+    "What": "Variable",
+    "defdec": "Def",
+    "display": "norming_value",
+    "location": {
+      "column": "24",
+      "line": "167",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "norming_value",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@UART1_TX_IRQHandler#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void UART1_TX_IRQHandler(void)",
+    "location": {
+      "column": "1",
+      "line": "177",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "UART1_TX_IRQHandler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@TIM1_UPD_OVF_TRG_BRK_IRQHandler#",
+    "What": "Function",
+    "defdec": "Def",
+    "display": "void TIM1_UPD_OVF_TRG_BRK_IRQHandler(void)",
+    "location": {
+      "column": "1",
+      "line": "199",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+    },
+    "name": "TIM1_UPD_OVF_TRG_BRK_IRQHandler",
+    "origin": "project_file",
+    "scope": null
+  },
+  {
     "ID": "c:stm8s_wwdg.c@1413@macro@BIT_MASK",
     "What": "MacroDef",
     "defdec": "Def",
@@ -45414,146 +45596,6 @@
       "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\src\\stm8s_wwdg.c"
     },
     "name": "WWDG_SetWindowValue",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:stm8s_wwdg.h@1291@macro@__STM8S_WWDG_H",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "__STM8S_WWDG_H",
-    "location": {
-      "column": "9",
-      "line": "30",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "__STM8S_WWDG_H",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stm8s_wwdg.h@1730@macro@IS_WWDG_WINDOWLIMITVALUE_OK",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "IS_WWDG_WINDOWLIMITVALUE_OK",
-    "location": {
-      "column": "9",
-      "line": "49",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "IS_WWDG_WINDOWLIMITVALUE_OK",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:stm8s_wwdg.h@1943@macro@IS_WWDG_COUNTERVALUE_OK",
-    "What": "MacroDef",
-    "defdec": "Def",
-    "display": "IS_WWDG_COUNTERVALUE_OK",
-    "location": {
-      "column": "9",
-      "line": "55",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "IS_WWDG_COUNTERVALUE_OK",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@WWDG_Init#c#c#",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void WWDG_Init(uint8_t, uint8_t)",
-    "location": {
-      "column": "6",
-      "line": "69",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "WWDG_Init",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@WWDG_SetCounter#c#",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void WWDG_SetCounter(uint8_t)",
-    "location": {
-      "column": "6",
-      "line": "70",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "WWDG_SetCounter",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@WWDG_GetCounter#",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "uint8_t WWDG_GetCounter(void)",
-    "location": {
-      "column": "9",
-      "line": "71",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "WWDG_GetCounter",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@WWDG_SWReset#",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void WWDG_SWReset(void)",
-    "location": {
-      "column": "6",
-      "line": "72",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "WWDG_SWReset",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@WWDG_SetWindowValue#c#",
-    "What": "Function",
-    "defdec": "Dec",
-    "display": "void WWDG_SetWindowValue(uint8_t)",
-    "location": {
-      "column": "6",
-      "line": "73",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
-    },
-    "name": "WWDG_SetWindowValue",
-    "origin": "user_include",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@SysConfig#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void SysConfig(void)",
-    "location": {
-      "column": "13",
-      "line": "8",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\main.c"
-    },
-    "name": "SysConfig",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@main#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void main(void)",
-    "location": {
-      "column": "6",
-      "line": "19",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\main.c"
-    },
-    "name": "main",
     "origin": "project_file",
     "scope": null
   },
@@ -45922,184 +45964,142 @@
     "scope": null
   },
   {
-    "ID": "c:@F@UART_Config#",
-    "What": "Function",
+    "ID": "c:stm8s_wwdg.h@1291@macro@__STM8S_WWDG_H",
+    "What": "MacroDef",
     "defdec": "Def",
-    "display": "void UART_Config(void)",
+    "display": "__STM8S_WWDG_H",
     "location": {
-      "column": "6",
-      "line": "6",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "column": "9",
+      "line": "30",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
     },
-    "name": "UART_Config",
-    "origin": "project_file",
+    "name": "__STM8S_WWDG_H",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@F@UART_Send#1c#",
-    "What": "Function",
+    "ID": "c:stm8s_wwdg.h@1730@macro@IS_WWDG_WINDOWLIMITVALUE_OK",
+    "What": "MacroDef",
     "defdec": "Def",
-    "display": "void UART_Send(const unsigned char)",
+    "display": "IS_WWDG_WINDOWLIMITVALUE_OK",
     "location": {
-      "column": "6",
-      "line": "15",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "column": "9",
+      "line": "49",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
     },
-    "name": "UART_Send",
-    "origin": "project_file",
+    "name": "IS_WWDG_WINDOWLIMITVALUE_OK",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@F@CLK_HSE_Config#",
-    "What": "Function",
+    "ID": "c:stm8s_wwdg.h@1943@macro@IS_WWDG_COUNTERVALUE_OK",
+    "What": "MacroDef",
     "defdec": "Def",
-    "display": "void CLK_HSE_Config(void)",
+    "display": "IS_WWDG_COUNTERVALUE_OK",
     "location": {
-      "column": "6",
-      "line": "23",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "CLK_HSE_Config",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@CLK_HSI_Config#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void CLK_HSI_Config(void)",
-    "location": {
-      "column": "6",
-      "line": "32",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "CLK_HSI_Config",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@GPIO_Config#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void GPIO_Config(void)",
-    "location": {
-      "column": "6",
-      "line": "35",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "GPIO_Config",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@TIM1_Config#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void TIM1_Config(void)",
-    "location": {
-      "column": "6",
-      "line": "44",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "TIM1_Config",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@TIM2_Config#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void TIM2_Config(void)",
-    "location": {
-      "column": "6",
+      "column": "9",
       "line": "55",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
     },
-    "name": "TIM2_Config",
-    "origin": "project_file",
+    "name": "IS_WWDG_COUNTERVALUE_OK",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@F@TIM4_Config#",
+    "ID": "c:@F@WWDG_Init#c#c#",
     "What": "Function",
-    "defdec": "Def",
-    "display": "void TIM4_Config(void)",
+    "defdec": "Dec",
+    "display": "void WWDG_Init(uint8_t, uint8_t)",
     "location": {
       "column": "6",
-      "line": "77",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "line": "69",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
     },
-    "name": "TIM4_Config",
-    "origin": "project_file",
+    "name": "WWDG_Init",
+    "origin": "user_include",
     "scope": null
   },
   {
-    "ID": "c:@F@TIM4_UPD_OVF_IRQHandler#",
+    "ID": "c:@F@WWDG_SetCounter#c#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void WWDG_SetCounter(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "70",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
+    },
+    "name": "WWDG_SetCounter",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@WWDG_GetCounter#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "uint8_t WWDG_GetCounter(void)",
+    "location": {
+      "column": "9",
+      "line": "71",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
+    },
+    "name": "WWDG_GetCounter",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@WWDG_SWReset#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void WWDG_SWReset(void)",
+    "location": {
+      "column": "6",
+      "line": "72",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
+    },
+    "name": "WWDG_SWReset",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@WWDG_SetWindowValue#c#",
+    "What": "Function",
+    "defdec": "Dec",
+    "display": "void WWDG_SetWindowValue(uint8_t)",
+    "location": {
+      "column": "6",
+      "line": "73",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\lib\\SPL\\inc\\stm8s_wwdg.h"
+    },
+    "name": "WWDG_SetWindowValue",
+    "origin": "user_include",
+    "scope": null
+  },
+  {
+    "ID": "c:@F@SysConfig#",
     "What": "Function",
     "defdec": "Def",
-    "display": "void TIM4_UPD_OVF_IRQHandler(void)",
+    "display": "void SysConfig(void)",
     "location": {
-      "column": "1",
-      "line": "91",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "column": "13",
+      "line": "8",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\main.c"
     },
-    "name": "TIM4_UPD_OVF_IRQHandler",
+    "name": "SysConfig",
     "origin": "project_file",
     "scope": null
   },
   {
-    "ID": "c:source.c@3459@F@TIM4_UPD_OVF_IRQHandler#@temp",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "temp",
-    "location": {
-      "column": "30",
-      "line": "100",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "temp",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:source.c@4097@F@TIM4_UPD_OVF_IRQHandler#@norming_value",
-    "What": "Variable",
-    "defdec": "Def",
-    "display": "norming_value",
-    "location": {
-      "column": "24",
-      "line": "118",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "norming_value",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@UART1_TX_IRQHandler#",
+    "ID": "c:@F@main#",
     "What": "Function",
     "defdec": "Def",
-    "display": "void UART1_TX_IRQHandler(void)",
+    "display": "void main(void)",
     "location": {
-      "column": "1",
-      "line": "175",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
+      "column": "6",
+      "line": "19",
+      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\main.c"
     },
-    "name": "UART1_TX_IRQHandler",
-    "origin": "project_file",
-    "scope": null
-  },
-  {
-    "ID": "c:@F@TIM1_UPD_OVF_TRG_BRK_IRQHandler#",
-    "What": "Function",
-    "defdec": "Def",
-    "display": "void TIM1_UPD_OVF_TRG_BRK_IRQHandler(void)",
-    "location": {
-      "column": "1",
-      "line": "197",
-      "path": "C:\\dev\\MCU\\STM8\\agPWM\\src\\source.c"
-    },
-    "name": "TIM1_UPD_OVF_TRG_BRK_IRQHandler",
+    "name": "main",
     "origin": "project_file",
     "scope": null
   }

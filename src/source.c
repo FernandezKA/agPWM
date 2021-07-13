@@ -50,7 +50,7 @@ void TIM1_Config(void)
   TIM1->ARRH = 1000U >> 8; /*16 MHz/32000/1000 = 0,5 Hz*/
   TIM1->ARRL = 1000U & 0xFF;
   TIM1->IER|=TIM1_IER_UIE;
-  //TIM1->BKR |= TIM1_BKR_MOE;
+  TIM1->BKR |= TIM1_BKR_MOE;
 }
 void TIM2_Config(void){
   /*THIS TIMER WE USING FOR GENERATE BLINKING LED
@@ -67,11 +67,11 @@ void TIM2_Config(void){
   TIM2->CCR3H = 244U>>8;
   TIM2->CCR3L = 244U&0xFFU;
   TIM2->CCER1|=TIM2_CCER1_CC2E;/*ENABLE CAPTURE/COMPARE FOR CHANNEL 2 AND 3*/
-  //TIM2->CCER2|=TIM2_CCER2_CC3E;
-  //TIM2->CCER2|=TIM2_CCER2_CC3P;/*UNPHASED BLINKING*/
-  //TIM2->CCMR1|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
+  TIM2->CCER2|=TIM2_CCER2_CC3E;
+  TIM2->CCER2|=TIM2_CCER2_CC3P;/*UNPHASED BLINKING*/
+  TIM2->CCMR1|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
   TIM2->CCMR2|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
-  //TIM2->CCMR3|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
+  TIM2->CCMR3|=(1U<<6|1U<<5|1U<<3);/*MODE 1 WITH OUTPUT COMPARE PRELOAD*/
   TIM2->CR1|=TIM2_CR1_CEN;/*RUN TIM2*/
 }
 void TIM4_Config(void)
@@ -88,7 +88,7 @@ void TIM4_Config(void)
   TIM4->CR1 |= TIM4_CR1_CEN;
 }
 /*************************************Block of Interrupt***********************/
-INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
+/*INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
 {
   if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
@@ -97,7 +97,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     if(index < size)
     {
       ++index;
-      volatile unsigned char temp = GPIOC->IDR;/*read value at input port*/
+      volatile unsigned char temp = GPIOC->IDR;//read value at input port
       ((temp&0x80U) == 0x80U)? (++ones_temp) : (ones_temp = ones_temp);
     }
     ///////////////////////////////////////////////////////////////////////////
@@ -123,9 +123,11 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
     }
   }
   
-}
+}*/
   /*At this IRQ we answering state of pin, and write into variable*/
- /* if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
+INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
+{
+ if (TIM4->SR1 & TIM4_SR1_UIF == TIM4_SR1_UIF)
   {
     
     TIM4->SR1 = (uint8_t) ~(TIM4_SR1_UIF);//Clear status register for out from IRQ
@@ -170,7 +172,7 @@ INTERRUPT_HANDLER(TIM4_UPD_OVF_IRQHandler, 23)
       return;
     }
   }
-} */
+} 
 /*******************************************************************************/
 INTERRUPT_HANDLER(UART1_TX_IRQHandler, 17)
 {
